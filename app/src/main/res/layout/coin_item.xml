@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="16dp">
+
+    <ImageView
+        android:id="@+id/coinIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:srcCompat="@drawable/xrp" />
+
+    <TextView
+        android:id="@+id/coinNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/coinIcon"
+        android:text="Bitcoin"
+
+        />
+    <TextView
+        android:id="@+id/coinTagTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/coinNameTextView"
+        app:layout_constraintStart_toEndOf="@id/coinIcon"
+        android:text="BTC"
+        android:textColor="@color/gray_400"
+        />
+
+    <TextView
+        android:id="@+id/coinCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="$24.000"
+        />
+
+    <TextView
+        android:id="@+id/coinCurrencyChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/coinCurrency"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/green_400"
+        android:text="+2,15%"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
