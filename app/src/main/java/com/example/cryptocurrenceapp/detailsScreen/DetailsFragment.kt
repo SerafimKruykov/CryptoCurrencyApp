@@ -51,6 +51,22 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         .substring(1, it.categories.toString().trimmedLength() - 1)
             }
         }
+
+        viewModel.showProgressIndication.observe(this){
+            binding?.progressIndicator?.visibility = View.VISIBLE
+        }
+
+        viewModel.hideProgressIndication.observe(this){
+            binding?.progressIndicator?.visibility = View.GONE
+        }
+
+        viewModel.showErrorLayout.observe(this){
+            binding?.errorLayout?.visibility = View.VISIBLE
+        }
+
+        viewModel.showContent.observe(this){
+            binding?.contentGroup?.visibility = View.VISIBLE
+        }
     }
 
     override fun onCreateView(
@@ -64,6 +80,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     override fun onStart() {
         super.onStart()
+        initView()
+        subscribeToViewModel()
+    }
+
+    fun initView(){
         binding?.apply {
             coinNameTextView2.text = coin.name
             coinIcon2.load(coin.image) {
@@ -74,7 +95,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 communicator.goBack()
             }
         }
-        subscribeToViewModel()
+        binding?.tryAgainBtn2?.setOnClickListener{
+            viewModel.getCoin(coin.id!!)
+            binding?.errorLayout?.visibility = View.GONE
+        }
     }
 
     companion object {

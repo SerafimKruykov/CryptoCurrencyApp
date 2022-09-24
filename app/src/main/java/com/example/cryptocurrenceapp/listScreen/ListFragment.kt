@@ -1,6 +1,7 @@
 package com.example.cryptocurrenceapp.listScreen
 
 import android.os.Bundle
+import android.transition.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,16 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         viewModel.eurCurrencyList.observe(this) {
             coinAdapterEur.submitList(it)
         }
+
+        viewModel.hideProgressIndication.observe(this){
+            binding?.progressIndicator?.visibility = View.GONE
+        }
+        viewModel.showProgressIndication.observe(this){
+            binding?.progressIndicator?.visibility = View.VISIBLE
+        }
+        viewModel.showErrorMassage.observe(this){
+            binding?.errorLayout?.visibility = View.VISIBLE
+        }
     }
 
     override fun onStart() {
@@ -69,6 +80,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         }
         binding?.chipUsd?.setOnClickListener {
             binding?.recycler?.adapter = coinAdapterUsd
+        }
+        binding?.tryAgainBtn?.setOnClickListener {
+            viewModel.refreshCoins()
+            binding?.errorLayout?.visibility = View.GONE
         }
     }
 

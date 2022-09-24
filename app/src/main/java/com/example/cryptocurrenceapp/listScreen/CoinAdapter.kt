@@ -59,10 +59,10 @@ class CoinAdapter(private val isUsd: Boolean, private val onClick: (Coin) -> Uni
             if(coin.price_change_percentage_24h!!.toDouble()>0.0){
                 text = "+" + coin.price_change_percentage_24h
             }else if(coin.price_change_percentage_24h.toDouble()<0.0){
-                text = coin.price_change_percentage_24h
+                text = coin.price_change_percentage_24h + "%"
                 setTextColor(Color.parseColor(Constants.Recycler.RED_COLOR))
             }else {
-                text = coin.price_change_percentage_24h
+                text = coin.price_change_percentage_24h + "%"
             }
         }
 
