@@ -12,34 +12,25 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="117dp"
-        android:background="@color/white"
+        style="@style/ListAppBar"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         >
 
         <androidx.appcompat.widget.Toolbar
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="117dp"
-
+            style="@style/ListToolBar"
             >
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/pageNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Список криптовалют"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    style="@style/ListPageNameTextView"
+
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="16dp"
@@ -49,24 +40,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginBottom="13dp"
                     >
 
                     <com.google.android.material.chip.ChipGroup
+                        app:checkedChip="@+id/chipUsd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:singleLine="true"
                         app:singleSelection="true"
                         app:selectionRequired="true"
-                        app:checkedChip="@+id/chipUsd"
+
                         >
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipUsd"
                             style="@style/ChipStyle"
-                            android:text="USD"
+                            android:text="@string/usd"
                             android:textAlignment="center"
 
                             />
@@ -74,7 +66,7 @@
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chipEur"
                             style="@style/ChipStyle"
-                            android:text="EUR"
+                            android:text="@string/eur"
                             android:textAlignment="center"
                             />
 
@@ -91,84 +83,80 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipeLayout"
+    style="@style/Refresh"
+
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        style="@style/Recycler"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        />
 
-    </androidx.recyclerview.widget.RecyclerView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <ProgressBar
         android:id="@+id/progress_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateDrawable="@drawable/progress_indication"
+        style="@style/listProgressIndicator"
+
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/errorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"
         >
+
         <ImageView
             android:id="@+id/btcImage"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginBottom="13dp"
+            style="@style/BtcImg"
+
             app:layout_constraintTop_toTopOf="@id/errorLayout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/btc"
             />
+
         <TextView
             android:id="@+id/tryAgainTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Случилась какая-то ошибка:( \nПопробуем снова?"
+            style="@style/tryAgainTextView"
             app:layout_constraintTop_toBottomOf="@id/btcImage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textAlignment="center"
-            android:textSize="14sp"
+
             />
         <Button
             android:id="@+id/tryAgainBtn"
-            android:layout_width="175dp"
-            android:layout_height="42dp"
+            style="@style/tryAgainBtn"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tryAgainTextView"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/orange_500"
-            android:textAlignment="center"
-            android:text="Попробовать"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 </FrameLayout>

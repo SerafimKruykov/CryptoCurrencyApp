@@ -21,8 +21,10 @@
         <item name="chipIconEnabled">false</item>
         <item name="checkedIconEnabled">false</item>
         <item name="checkedIconVisible">false</item>
-        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">89dp</item>
     </style>
+
+
     
 </resources>

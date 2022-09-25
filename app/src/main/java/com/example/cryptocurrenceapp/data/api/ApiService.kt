@@ -1,8 +1,7 @@
 package com.example.cryptocurrenceapp.data.api
 
-import com.example.cryptocurrenceapp.Constants.API.DETAILS_TARGET
-import com.example.cryptocurrenceapp.Constants.API.EUR_TARGET
-import com.example.cryptocurrenceapp.Constants.API.USD_TARGET
+import com.example.cryptocurrenceapp.common.Constants.API.EUR_TARGET
+import com.example.cryptocurrenceapp.common.Constants.API.USD_TARGET
 import com.example.cryptocurrenceapp.data.Coin
 import retrofit2.Call
 import retrofit2.http.GET

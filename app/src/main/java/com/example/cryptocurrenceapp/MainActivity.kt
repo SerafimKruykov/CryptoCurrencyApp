@@ -1,8 +1,9 @@
 package com.example.cryptocurrenceapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AppCompatActivity
+import com.example.cryptocurrenceapp.common.Constants.FragmentsStack.LIST_KEY
+import com.example.cryptocurrenceapp.common.Fragments.Communicator
 import com.example.cryptocurrenceapp.data.Coin
 import com.example.cryptocurrenceapp.detailsScreen.DetailsFragment
 
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity(), Communicator {
         val detailsFragment = DetailsFragment.newInstance(coin)
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container_view, detailsFragment)
-            addToBackStack(null)
+            addToBackStack(LIST_KEY)
             commit()
         }
     }

@@ -1,4 +1,4 @@
-package com.example.cryptocurrenceapp
+package com.example.cryptocurrenceapp.common.viewModels
 
 import android.util.Log
 import androidx.annotation.MainThread

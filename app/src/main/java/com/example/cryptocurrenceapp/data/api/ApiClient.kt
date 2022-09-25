@@ -1,14 +1,10 @@
 package com.example.cryptocurrenceapp.data.api
 
-import com.example.cryptocurrenceapp.Constants
-import com.example.cryptocurrenceapp.Constants.API.BASE_URL
-import com.example.cryptocurrenceapp.data.Coin
+import com.example.cryptocurrenceapp.common.Constants.API.BASE_URL
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.GET
 
 object ApiClient {
 

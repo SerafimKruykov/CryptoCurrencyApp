@@ -1,4 +1,4 @@
-package com.example.cryptocurrenceapp
+package com.example.cryptocurrenceapp.common
 
 class Constants {
 
@@ -11,8 +11,18 @@ class Constants {
         const val DETAILS_TARGET = "coins/"
     }
 
+    object FragmentsStack{
+        const val LIST_KEY = "list_fragment"
+    }
+
     object Recycler{
         const val RED_COLOR = "#EB5757"
+        const val DECIMAL_PATTERN = "##,##0.00"
+    }
+
+    object ListFragment{
+        const val GRAVITY_X = 0
+        const val GRAVITY_Y = 40
     }
 
     object DetailsFragment{

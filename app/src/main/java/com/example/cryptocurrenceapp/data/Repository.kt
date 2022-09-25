@@ -1,6 +1,6 @@
 package com.example.cryptocurrenceapp.data
 
-import com.example.cryptocurrenceapp.Constants.API.DETAILS_TARGET
+import com.example.cryptocurrenceapp.common.Constants.API.DETAILS_TARGET
 import com.example.cryptocurrenceapp.data.api.ApiClient
 import com.example.cryptocurrenceapp.data.api.DetailsResponseModel
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,6 @@ class Repository {
     }
 
     suspend fun fetchEurCurrency(): List<Coin>? {
-
         return withContext(Dispatchers.IO) {
             apiService.fetchEurCoins().execute().body()
         }

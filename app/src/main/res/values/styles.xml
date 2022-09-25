@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //ListFragment
+
+    <style name="ListAppBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">117dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="ListToolBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">117dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ListPageNameTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:text">Список криптовалют</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Refresh">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="Recycler">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+
+
+    //DetailsFragment
+
+    <style name="DetailsAppBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="DetailsToolBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="goBackImg">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:contentDescription">@string/go_back</item>
+        <item name="android:src">@drawable/ic_baseline_arrow_back_24</item>
+    </style>
+
+    <style name="coinName2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">36dp</item>
+        <item name="android:text">@string/coin</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="coinIcon2">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:src">@mipmap/ic_launcher</item>
+        <item name="android:contentDescription">@string/coinImg</item>
+    </style>
+
+    <style name="Header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="descriptionContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:text">@string/Description</item>
+    </style>
+
+    <style name="categoriesContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:text">@string/categories</item>
+    </style>
+
+
+
+    //Common
+
+        //ProgressBar
+
+    <style name="progressIndicator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:indeterminateDrawable">@drawable/progress_indication</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="listProgressIndicator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:indeterminateDrawable">@drawable/progress_indication</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+        //ErrorLayout
+
+    <style name="BtcImg">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_marginBottom">13dp</item>
+        <item name="android:src">@drawable/btc</item>
+        <item name="android:contentDescription">@string/btcImg</item>
+    </style>
+
+    <style name="tryAgainTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:text">@string/error_msg</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="tryAgainBtn">
+        <item name="android:layout_width">175dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:text">@string/tryBtn</item>
+        <item name="android:backgroundTint">@color/orange_500</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
