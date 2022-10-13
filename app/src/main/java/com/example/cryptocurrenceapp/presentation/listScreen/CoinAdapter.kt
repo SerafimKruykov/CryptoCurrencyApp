@@ -1,6 +1,6 @@
-package com.example.cryptocurrenceapp.listScreen
+package com.example.cryptocurrenceapp.presentation.listScreen
 
-import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -13,28 +13,28 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.cryptocurrenceapp.R
-import com.example.cryptocurrenceapp.common.Constants
-import com.example.cryptocurrenceapp.common.Constants.Recycler.DECIMAL_PATTERN
-import com.example.cryptocurrenceapp.data.Coin
+import com.example.cryptocurrenceapp.data.models.CoinModel
+import com.example.cryptocurrenceapp.presentation.common.Constants
+import com.example.cryptocurrenceapp.presentation.common.Constants.Recycler.DECIMAL_PATTERN
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
-import java.util.Locale
+import java.util.*
 
 class CoinAdapter(
     private val isUsd: Boolean,
-    private val context: Context,
-    private val onClick: (Coin) -> Unit
+    private val resources: Resources,
+    private val onClick: (CoinModel) -> Unit
 ) :
-    ListAdapter<Coin, CoinAdapter.CoinViewHolder>(Callback()) {
+    ListAdapter<CoinModel, CoinAdapter.CoinViewHolder>(Callback()) {
 
     inner class CoinViewHolder
-        (itemView: View, val onClick: (Coin) -> Unit) : RecyclerView.ViewHolder(itemView) {
+        (itemView: View, val onClick: (CoinModel) -> Unit) : RecyclerView.ViewHolder(itemView) {
         val coinName: TextView = itemView.findViewById(R.id.coinNameTextView)
         val tagName: TextView = itemView.findViewById(R.id.coinTagTextView)
         val coinCurrency: TextView = itemView.findViewById(R.id.coinCurrency)
         val coinImage: ImageView = itemView.findViewById(R.id.coinIcon)
         val coinCurrencyChange: TextView = itemView.findViewById(R.id.coinCurrencyChange)
-        var currentCoin: Coin? = null
+        var currentCoin: CoinModel? = null
 
         init {
             itemView.setOnClickListener {
@@ -55,19 +55,19 @@ class CoinAdapter(
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         val decimalFormat = DecimalFormat(DECIMAL_PATTERN, DecimalFormatSymbols((Locale.ENGLISH)))
-        val coin: Coin = getItem(position)
+        val coin: CoinModel = getItem(position)
 
         holder.coinName.text = coin.name
         holder.tagName.text = coin.symbol!!.uppercase()
 
         if (isUsd) {
-            holder.coinCurrency.text = context.getString(
+            holder.coinCurrency.text = resources.getString(
                 R.string.usd_currency_str,
                 decimalFormat.format(coin.current_price?.toDouble())
             )
         } else {
             holder.coinCurrency.text =
-                context.getString(
+                resources.getString(
                     R.string.eur_currency_str,
                     decimalFormat.format(coin.current_price?.toDouble()))
         }
@@ -110,12 +110,12 @@ class CoinAdapter(
         holder.currentCoin = coin
     }
 
-    class Callback : DiffUtil.ItemCallback<Coin>() {
-        override fun areItemsTheSame(oldItem: Coin, newItem: Coin): Boolean {
+    class Callback : DiffUtil.ItemCallback<CoinModel>() {
+        override fun areItemsTheSame(oldItem: CoinModel, newItem: CoinModel): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Coin, newItem: Coin): Boolean {
+        override fun areContentsTheSame(oldItem: CoinModel, newItem: CoinModel): Boolean {
             return oldItem.name == newItem.name
         }
     }

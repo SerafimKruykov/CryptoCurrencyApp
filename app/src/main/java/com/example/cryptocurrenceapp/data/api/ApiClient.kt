@@ -1,6 +1,6 @@
 package com.example.cryptocurrenceapp.data.api
 
-import com.example.cryptocurrenceapp.common.Constants.API.BASE_URL
+import com.example.cryptocurrenceapp.presentation.common.Constants.API.BASE_URL
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

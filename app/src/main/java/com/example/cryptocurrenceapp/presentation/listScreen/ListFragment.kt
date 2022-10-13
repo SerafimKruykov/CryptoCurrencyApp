@@ -1,4 +1,4 @@
-package com.example.cryptocurrenceapp.listScreen
+package com.example.cryptocurrenceapp.presentation.listScreen
 
 import android.os.Bundle
 import android.view.Gravity
@@ -9,11 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cryptocurrenceapp.common.Fragments.Communicator
+import com.example.cryptocurrenceapp.presentation.common.Fragments.Communicator
 import com.example.cryptocurrenceapp.R
-import com.example.cryptocurrenceapp.common.Constants.ListFragment.GRAVITY_X
-import com.example.cryptocurrenceapp.common.Constants.ListFragment.GRAVITY_Y
-import com.example.cryptocurrenceapp.data.Coin
+import com.example.cryptocurrenceapp.presentation.common.Constants.ListFragment.GRAVITY_X
+import com.example.cryptocurrenceapp.presentation.common.Constants.ListFragment.GRAVITY_Y
+import com.example.cryptocurrenceapp.data.models.CoinModel
 import com.example.cryptocurrenceapp.databinding.FragmentListBinding
 
 
@@ -78,10 +78,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
     private fun initView() {
 
-        coinAdapterUsd = CoinAdapter(true, requireContext()) { coin -> recyclerCallback(coin) }.apply {
+        coinAdapterUsd = CoinAdapter(true, resources) { coin -> recyclerCallback(coin) }.apply {
             submitList(viewModel.usdCurrencyList.value)
         }
-        coinAdapterEur = CoinAdapter(false, requireContext()) { coin -> recyclerCallback(coin) }.apply{
+        coinAdapterEur = CoinAdapter(false, resources) { coin -> recyclerCallback(coin) }.apply{
             submitList(viewModel.eurCurrencyList.value)
         }
 
@@ -116,7 +116,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         }.show()
     }
 
-    private fun recyclerCallback(coin: Coin?) {
+    private fun recyclerCallback(coin: CoinModel?) {
         communicator.openDetails(coin)
     }
 }

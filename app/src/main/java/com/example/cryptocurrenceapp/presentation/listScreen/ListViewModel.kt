@@ -1,19 +1,24 @@
-package com.example.cryptocurrenceapp.listScreen
+package com.example.cryptocurrenceapp.presentation.listScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cryptocurrenceapp.common.viewModels.SingleLiveEvent
-import com.example.cryptocurrenceapp.data.Coin
-import com.example.cryptocurrenceapp.data.Repository
+import com.example.cryptocurrenceapp.presentation.common.viewModels.SingleLiveEvent
+import com.example.cryptocurrenceapp.data.models.CoinModel
+import com.example.cryptocurrenceapp.data.repositories.ListRepository
+import com.example.cryptocurrenceapp.data.useCases.GetEurCoinsUseCase
+import com.example.cryptocurrenceapp.data.useCases.GetUsdCoinsUseCase
 import kotlinx.coroutines.launch
 
 class ListViewModel : ViewModel() {
 
-    private val repository = Repository()
+    private val listRepository = ListRepository()
 
-    var usdCurrencyList = MutableLiveData<List<Coin>>()
-    var eurCurrencyList = MutableLiveData<List<Coin>>()
+    private val getEurCoinsUseCase = GetEurCoinsUseCase(repository = listRepository)
+    private val getUsdCoinsUseCase = GetUsdCoinsUseCase(repository = listRepository)
+
+    var usdCurrencyList = MutableLiveData<List<CoinModel>?>()
+    var eurCurrencyList = MutableLiveData<List<CoinModel>?>()
 
     val showProgressIndication = SingleLiveEvent<Unit>()
     val hideProgressIndication = SingleLiveEvent<Unit>()
@@ -34,13 +39,13 @@ class ListViewModel : ViewModel() {
             showProgressIndication.call()
 
             val usdList = try {
-                repository.fetchUsdCurrency()
+                getUsdCoinsUseCase.execute()
             } catch (e: Exception) {
                 null
             }
 
             val eurList = try {
-                repository.fetchEurCurrency()
+                getEurCoinsUseCase.execute()
             } catch (e: Exception) {
                 null
             }
@@ -48,8 +53,8 @@ class ListViewModel : ViewModel() {
             if (usdList != null && eurList != null) {
                 hideProgressIndication.call()
 
-                usdCurrencyList.value = usdList!!
-                eurCurrencyList.value = eurList!!
+                usdCurrencyList.value = usdList
+                eurCurrencyList.value = eurList
             } else {
                 hideProgressIndication.call()
                 showErrorMassage.call()
@@ -62,21 +67,20 @@ class ListViewModel : ViewModel() {
             showRefreshing.call()
 
             val usdList = try {
-                repository.fetchUsdCurrency()
+                getUsdCoinsUseCase.execute()
             } catch (e: Exception) {
                 null
             }
             val eurList = try {
-                repository.fetchEurCurrency()
+                getEurCoinsUseCase.execute()
             } catch (e: Exception) {
                 null
             }
 
             if (usdList != null && eurList != null) {
                 hideRefreshing.call()
-
-                usdCurrencyList.value = usdList!!
-                eurCurrencyList.value = eurList!!
+                usdCurrencyList.value = usdList
+                eurCurrencyList.value = eurList
             } else {
                 hideRefreshing.call()
                 showRefreshErrorToast.call()

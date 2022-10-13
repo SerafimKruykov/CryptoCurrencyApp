@@ -1,11 +1,11 @@
-package com.example.cryptocurrenceapp.data
+package com.example.cryptocurrenceapp.data.models
 
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Coin(
+data class CoinModel(
     @Json(name = "id")
     val id: String?,
 

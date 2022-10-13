@@ -1,4 +1,4 @@
-package com.example.cryptocurrenceapp.detailsScreen
+package com.example.cryptocurrenceapp.presentation.detailsScreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.example.cryptocurrenceapp.R
-import com.example.cryptocurrenceapp.common.Constants.DetailsFragment.ARG_KEY
-import com.example.cryptocurrenceapp.common.Fragments.Communicator
-import com.example.cryptocurrenceapp.data.Coin
+import com.example.cryptocurrenceapp.presentation.common.Constants.DetailsFragment.ARG_KEY
+import com.example.cryptocurrenceapp.presentation.common.Fragments.Communicator
+import com.example.cryptocurrenceapp.data.models.CoinModel
 import com.example.cryptocurrenceapp.databinding.FragmentDetailsBinding
 
 
@@ -21,7 +21,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private lateinit var viewModel: DetailsViewModel
     private lateinit var communicator: Communicator
-    private lateinit var coin: Coin
+    private lateinit var coin: CoinModel
 
     private var binding: FragmentDetailsBinding? = null
 
@@ -60,16 +60,16 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             binding?.apply {
 
                 descriptionContent.text =
-                    HtmlCompat.fromHtml(it.description.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+                    HtmlCompat.fromHtml(it?.description.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
                         .substring(15,
-                            HtmlCompat.fromHtml(it.description.toString(),
+                            HtmlCompat.fromHtml(it?.description.toString(),
                                 HtmlCompat.FROM_HTML_MODE_LEGACY
                             ).trimmedLength() - 1
                         )
 
                 categoriesContent.text =
-                    it.categories.toString()
-                        .substring(1, it.categories.toString().trimmedLength() - 1)
+                    it?.categories.toString()
+                        .substring(1, it?.categories.toString().trimmedLength() - 1)
             }
         }
 
@@ -113,7 +113,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     companion object {
         @JvmStatic
-        fun newInstance(coin: Coin?) =
+        fun newInstance(coin: CoinModel?) =
             DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(ARG_KEY, coin!!)

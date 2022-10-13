@@ -1,4 +1,4 @@
-package com.example.cryptocurrenceapp.data.api
+package com.example.cryptocurrenceapp.data.models
 
 import com.squareup.moshi.Json
 
